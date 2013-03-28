@@ -1,0 +1,43 @@
+{
+    "name": "crimsonronin/BearWitness",
+    "description": "Line up evaluation",
+    "license": "",
+    "keywords": [
+        "zoop",
+        "zf2"
+    ],
+    "homepage": "http://bearwitness.com.au/",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://raw.github.com/superdweebie/dojo/master"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "2.*",
+        "doctrine/DoctrineORMModule": "dev-master",
+        "superdweebie/dojo": "dev-master",
+        "superdweebie/sijit": "dev-master",
+        "xsokev/dojo-bootstrap": "v1.2",
+        "twitter/bootstrap-custompath": "2.3.1",
+        "fort-awesome/font-awesome": "3.0.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Crx\\Api\\": "module/BearWitness/src"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "public/dev-assets/Sds": ["superdweebie/sijit"],
+            "public/dev-assets/bootstrap": ["xsokev/dojo-bootstrap"],
+            "public/dev-assets/dijit": ["dojo/dijit"],
+            "public/dev-assets/dojo": ["dojo/dojo"],
+            "public/dev-assets/dojox": ["dojo/dojox"],
+            "public/dev-assets/util": ["dojo/util"],
+            "public/dev-assets/themes/bootstrap": ["twitter/bootstrap-custompath"]            
+        }
+    }
+}
