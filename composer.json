@@ -1,12 +1,12 @@
 {
-    "name": "crimsonronin/BearWitness",
-    "description": "Line up evaluation",
+    "name": "crimsonronin/YouWitness",
+    "description": "You Witness",
     "license": "",
     "keywords": [
         "zoop",
         "zf2"
     ],
-    "homepage": "http://bearwitness.com.au/",
+    "homepage": "http://youwitness.com.au/",
     "minimum-stability": "dev",
     "repositories": [
         {
@@ -17,27 +17,27 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "2.*",
-        "doctrine/DoctrineORMModule": "dev-master",
+        "doctrine/doctrine-module": "0.7.*",
+        "doctrine/doctrine-orm-module": "dev-master",
         "superdweebie/dojo": "dev-master",
         "superdweebie/sijit": "dev-master",
         "xsokev/dojo-bootstrap": "v1.2",
-        "twitter/bootstrap-custompath": "2.3.1",
+        "twitter/bootstrap": "2.3.1",
         "fort-awesome/font-awesome": "3.0.1"
     },
     "autoload": {
         "psr-0": {
-            "Crx\\Api\\": "module/BearWitness/src"
+            "YouWitness\\": "module/YouWitness/src"
         }
     },
     "extra": {
         "installer-paths": {
-            "public/dev-assets/Sds": ["superdweebie/sijit"],
-            "public/dev-assets/bootstrap": ["xsokev/dojo-bootstrap"],
-            "public/dev-assets/dijit": ["dojo/dijit"],
-            "public/dev-assets/dojo": ["dojo/dojo"],
-            "public/dev-assets/dojox": ["dojo/dojox"],
-            "public/dev-assets/util": ["dojo/util"],
-            "public/dev-assets/themes/bootstrap": ["twitter/bootstrap-custompath"]            
+            "vendor/dojo/Sds": ["superdweebie/sijit"],
+            "vendor/dojo/bootstrap": ["xsokev/dojo-bootstrap"],
+            "vendor/dojo/dijit": ["dojo/dijit"],
+            "vendor/dojo/dojo": ["dojo/dojo"],
+            "vendor/dojo/dojox": ["dojo/dojox"],
+            "vendor/dojo/util": ["dojo/util"]
         }
     }
 }

@@ -5,7 +5,7 @@ return array(
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
-        'EyeWitnessTest',
+        'YouWitness',
     ),
     'module_listener_options' => array(
         'module_paths' => array(

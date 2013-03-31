@@ -15,7 +15,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'EyeWitnessTest\Controller\Index',
+                        'controller' => 'YouWitness\Controller\YouWitness',
                         'action'     => 'index',
                     ),
                 ),
@@ -24,12 +24,12 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'EyeWitnessTest' => array(
+            'YouWitness' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/EyeWitnessTest',
+                    'route'    => '/YouWitness',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'EyeWitnessTest\Controller',
+                        '__NAMESPACE__' => 'YouWitness\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),

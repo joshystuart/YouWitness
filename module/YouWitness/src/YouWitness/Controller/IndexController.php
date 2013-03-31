@@ -5,7 +5,7 @@
  * @link      http://github.com/crimsonronin/YouWitness for the canonical source repository
  */
 
-namespace Crx\EyeWitnessTest\Controller;
+namespace YouWitness\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
