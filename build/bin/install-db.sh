@@ -1,5 +1,3 @@
 #!/bin/bash
 
-sh ./vendor/bin/doctrine orm:schema-tool:create
-
-#sh ./vendor/bin/doctrine orm:validate-schema
+sh ./vendor/bin/doctrine-module orm:schema-tool:create
