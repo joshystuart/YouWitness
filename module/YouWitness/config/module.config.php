@@ -4,12 +4,8 @@ return [
     'controllers' => [
         'invokables' => [
             'youwitness' => 'YouWitness\Controller\IndexController',
-            'step1' => 'YouWitness\Controller\Step1Controller',
-            'step2' => 'YouWitness\Controller\Step2Controller',
-            'step3' => 'YouWitness\Controller\Step3Controller',
-            'step4' => 'YouWitness\Controller\Step4Controller',
-            'step5' => 'YouWitness\Controller\Step5Controller',
-            'step6' => 'YouWitness\Controller\Step6Controller',
+            'experiment' => 'YouWitness\Controller\ExperimentController',
+            'admin' => 'YouWitness\Controller\AdminController',
         ],
     ],
     'router' => array(
@@ -24,57 +20,22 @@ return [
                     ),
                 ),
             ),
-            'step-1' => array(
+            'experiment' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/step-1',
+                    'route' => '/experiment',
                     'defaults' => array(
-                        'controller' => 'step1',
+                        'controller' => 'experiment',
                     ),
                 ),
             ),
-            'step-2' => array(
+            'admin' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/step-2',
+                    'route' => '/admin',
                     'defaults' => array(
-                        'controller' => 'step2',
-                    ),
-                ),
-            ),
-            'step-3' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/step-3',
-                    'defaults' => array(
-                        'controller' => 'step3',
-                    ),
-                ),
-            ),
-            'step-4' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/step-4',
-                    'defaults' => array(
-                        'controller' => 'step4',
-                    ),
-                ),
-            ),
-            'step-5' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/step-5',
-                    'defaults' => array(
-                        'controller' => 'step5',
-                    ),
-                ),
-            ),
-            'step-6' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/step-6',
-                    'defaults' => array(
-                        'controller' => 'step6',
+                        'controller' => 'admin',
+                        'action' => 'index',
                     ),
                 ),
             ),

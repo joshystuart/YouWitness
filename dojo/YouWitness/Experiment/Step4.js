@@ -24,8 +24,10 @@ define([
                 startup: function() {
                     this.inherited(arguments);
                     this.emit('save', {
-                        data: {},
-                        target: '/step-4'
+                        data: {
+                            section: '4'
+                        },
+                        target: '/experiment'
                     });
                 },
                 onNext: function() {

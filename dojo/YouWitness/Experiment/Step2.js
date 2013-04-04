@@ -40,9 +40,12 @@ define([
                 onNext: function() {
                     if (this.get('gender')) {
                         this.emit('save', {
-                            data: {gender: this.get('gender')},
+                            data: {
+                                section: '2',
+                                gender: this.get('gender')
+                            },
                             message: 'saving your information',
-                            target: '/step-2'
+                            target: '/experiment'
                         });
                     }
                 }

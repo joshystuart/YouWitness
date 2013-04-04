@@ -22,9 +22,11 @@ define([
                 init: function() {
                     this.def = new Deferred();
                     this.emit('save', {
-                        data: {},
+                        data: {
+                            section: '1'
+                        },
                         message: 'loading',
-                        target: '/step-1'
+                        target: '/experiment'
                     });
                     this.on('saved', lang.hitch(this, function() {
                         this.def.resolve({});

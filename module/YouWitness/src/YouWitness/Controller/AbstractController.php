@@ -45,14 +45,4 @@ abstract class AbstractController extends AbstractRestfulController {
         return $this->em;
     }
 
-    protected function setStep(Participant $participant, $section) {
-        $step = new Step();
-        $step->participant = $participant;
-        $step->section = $section;
-        $em = $this->getEntityManager();
-
-        $em->persist($step);
-        $em->flush();
-    }
-
 }

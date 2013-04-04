@@ -21,8 +21,23 @@ define([
                     this.inherited(arguments);
                     setTimeout(lang.hitch(this, this.onNext), 60000);
                 },
+                init: function() {
+                    this.def = new Deferred();
+                    this.emit('save', {
+                        data: {
+                            section: '5'
+                        },
+                        message: 'loading',
+                        target: '/experiment'
+                    });
+                    this.on('saved', lang.hitch(this, function(r) {
+                        console.log(r);
+                        this.def.resolve({});
+                    }));
+                    return this.def;
+                },
                 onNext: function() {
-                    this.emit('next', {section: 'Step5'});
+                    this.emit('next', {section: 'Step6'});
                 }
             }
     );

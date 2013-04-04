@@ -1,5 +1,4 @@
 <?php
-
 /**
  * You Witness (http://youwitness.com.au/)
  *
@@ -11,10 +10,10 @@ namespace YouWitness\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController {
-
-    public function indexAction() {
-        return ['app_script' => '/js/application.js'];
+class AdminController extends AbstractActionController
+{
+    public function indexAction()
+    {
+        return new ViewModel();
     }
-
 }

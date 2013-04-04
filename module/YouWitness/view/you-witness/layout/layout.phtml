@@ -2,20 +2,24 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('Bear Witness')->setAutoEscape(false); ?>
+        <?php echo $this->headTitle('YouWitness')->setAutoEscape(false); ?>
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0'); ?>
         <?php
-            echo $this->headLink()
-            ->prependStylesheet($this->basePath() . '/css/main.css')
-            ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
-            ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
-            
-            echo $this->headScript()
-                ->appendFile('/js/config.js','text/javascript')
-                ->appendFile('/js/dojo/dojo/dojo.js','text/javascript')
-                ->appendFile('/js/application.js','text/javascript');
-        ?>
+        //get current view model
+        $children = $this->viewModel()->getCurrent()->getChildren();
+        $child = $children[0];
         
+        echo $this->headLink()
+                ->prependStylesheet($this->basePath() . '/css/main.css')
+                ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+                ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+
+        echo $this->headScript()
+                ->appendFile('/js/config.js', 'text/javascript')
+                ->appendFile('/js/dojo/dojo/dojo.js', 'text/javascript')
+                ->appendFile($child->app_script, 'text/javascript');
+        ?>
+
     </head>
     <body>
         <div class="container">
