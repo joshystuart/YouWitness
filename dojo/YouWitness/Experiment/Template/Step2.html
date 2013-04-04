@@ -1,0 +1,21 @@
+<div data-dojo-attach-point="containerNode">
+    <div class="jumbotron">
+        <h1>Demographics</h1>
+        <p class="lead">Please choose your sex:</p>
+        <div data-dojo-type="Sds/Form/Toggle"
+             data-dojo-attach-point="genderToggleNode">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </div>
+
+        <p>&nbsp;</p>
+        <p><strong>Please read the following before clicking 'Next':</strong></p>
+        <p>On the next page you will view a 45 second video.</p>
+        <p><strong>Please note:</strong> The video will <strong>auto-play</strong>, and it will only place <strong>once</strong> before automatically moving to the next page.</p>
+        <p>You will not be able to pause the video and volume is not necessary.</p>
+        <p>&nbsp;</p>
+        <p><button class="btn btn-primary btn-large hide"
+                   data-dojo-attach-point="nextButtonNode"
+                   data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
+    </div>
+</div>

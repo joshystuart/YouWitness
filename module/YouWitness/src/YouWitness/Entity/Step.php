@@ -5,7 +5,7 @@ namespace YouWitness\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class Participant {
+class Step {
 
     /**
      * @ORM\Id 
@@ -13,21 +13,17 @@ class Participant {
      * @ORM\GeneratedValue 
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=150, nullable=true) 
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=6, nullable=true) 
-     */
-    private $gender;
     
+   /**
+     * @ORM\ManyToOne(targetEntity="Participant")
+     * @ORM\JoinColumn(name="participant", referencedColumnName="id")
+     * */
+    private $participant;
+
     /**
-     * @ORM\Column(type="datetime") 
+     * @ORM\Column(type="string") 
      */
-    private $date;
+    private $section;
 
     public function __get($key) {
         return $this->$key;

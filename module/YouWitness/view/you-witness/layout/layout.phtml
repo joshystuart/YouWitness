@@ -2,35 +2,27 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('Bear Witness')->setAutoEscape(false) ?>
-
-        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <?php echo $this->headTitle('Bear Witness')->setAutoEscape(false); ?>
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0'); ?>
         <?php
-        echo $this->headLink()
-                ->prependStylesheet($this->basePath() . '/css/main.css')
-                ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
-                ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+            echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/main.css')
+            ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+            ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+            
+            echo $this->headScript()
+                ->appendFile('/js/config.js','text/javascript')
+                ->appendFile('/js/dojo/dojo/dojo.js','text/javascript')
+                ->appendFile('/js/application.js','text/javascript');
         ?>
+        
     </head>
     <body>
         <div class="container">
             <div class="masthead">
                 <h3 class="muted">YouWitness.com.au</h3>
             </div>
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <ul class="nav">
-                            <li class="active"> <a href="#"> Step 1 <small>Consent</small> </a> </li>
-                            <li> <a href="#"> Step 2 <small>Demographics</small> </a> </li>
-                            <li> <a href="#"> Step 3 <small>Watch Video</small> </a> </li>
-                            <li> <a href="#"> Step 4 <small>Word Search</small> </a> </li>
-                            <li> <a href="#"> Step 5 <small>Suspect Line-up</small> </a> </li>
-                            <li> <a href="#"> Step 6 <small>Thank You</small> </a> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <div class="navbar" id="nav"></div>
             <div id="content">
                 <?php echo $this->content; ?>
             </div>
@@ -38,4 +30,5 @@
                 <p class="copy">&copy; YouWitness.com.au 2013</p>
             </div>
         </div>
+    </body>
 </html>
