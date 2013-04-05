@@ -42,16 +42,18 @@ define([
                     //callback on save
                     dialog.show().then(lang.hitch(this, function(result) {
                         if (result.button == 'ok') {
-                            lang.mixin(this, result.value);
-                            lang.mixin(this._model, result.value);
-                            this.set('lineupMethod', result.value.lineupMethod);
-                            this.set('lineupComments', result.value.lineupComments);
+                            var value = detail.get('value');
+                            lang.mixin(this, value);
+                            lang.mixin(this._model, value);
+                            this.set('lineupMethod', value.lineupMethod);
+                            this.set('lineupComments', value.lineupComments);
 
-                            result.value.id = this.get('lineupId');
+                            value.id = this.get('lineupId');
                             this.emit('save', {
-                                data: result.value
+                                data: value
                             });
                         }
+                        detail.destroyRecursive();
                         dialog.destroyRecursive();
                     }));
                 },

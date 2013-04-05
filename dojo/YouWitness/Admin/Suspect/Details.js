@@ -6,7 +6,6 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'Sds/Form/_FormMixin',
-    'dojo/Evented',
     'dojo/text!./Template/Details.html',
     'Sds/Form/Select'
 ], function(
@@ -17,11 +16,10 @@ define([
         TemplatedMixin,
         WidgetsInTemplateMixin,
         FormMixin,
-        Evented,
         template
         ) {
     return declare(
-            [Widget, TemplatedMixin, WidgetsInTemplateMixin, FormMixin, Evented],
+            [Widget, TemplatedMixin, WidgetsInTemplateMixin, FormMixin],
             {
                 templateString: template,
                 _model: {},
@@ -29,6 +27,7 @@ define([
                 suspectImage: null,
                 suspectExpression: null,
                 fileManager: undefined,
+                baseSrc: 'https://youwitness.s3.amazonaws.com/suspects/',
                 constructor: function(props) {
                     lang.mixin(this, props);
                     this._model = props;
@@ -47,6 +46,7 @@ define([
                 postCreate: function() {
                     this.inherited(arguments);
                     this.imageNode.appendChild(this.fileManager.domNode);
+                    this.connectChildren();
                 },
                 _getSuspectImageAttr: function() {
                     var images = this.fileManager.get('files');
@@ -60,6 +60,9 @@ define([
                         this.fileManager.set('files', [{
                                 "raw": {
                                     "fileExt": "jpg",
+                                    "fileParent": image.replace(this.baseSrc, ''),
+                                    "fileId": image.replace(this.baseSrc, ''),
+                                    "fileName": image.replace(this.baseSrc, ''),
                                     "fileType": "image/jpg",
                                     "fileSrc": image
                                 }

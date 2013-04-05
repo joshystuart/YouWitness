@@ -67,9 +67,12 @@ return [
                 ),
             ),
             'admin-upload' => array(
-                'type' => 'Literal',
+                'type' => 'Segment',
                 'options' => array(
-                    'route' => '/admin/upload',
+                    'route' => '/admin/upload[/:id]',
+                    'constraints' => array(
+                        'id' => '[0-9a-zA-Z\.]+',
+                    ),
                     'defaults' => array(
                         'controller' => 'admin-upload',
                     ),

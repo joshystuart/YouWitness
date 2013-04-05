@@ -62,16 +62,17 @@ define([
 
                             w.on('save', lang.hitch(this, function(r2) {
                                 if (r2.data) {
-                                    if (r2.data.id > 0) {
+                                    if (r2.data.id == 0) {
+                                        r2.data.id = undefined;
+                                        j.target = this.target + lStep;
+                                        j.put(r2.data).then(lang.hitch(this, function(r3) {
+                                            w.add(r3.data);
+                                        }));
+                                    } else {
                                         j.target = this.target + lStep + '/';
 
                                         j.put(r2.data, {id: r2.data.id}).then(lang.hitch(this, function(r3) {
                                             //do nothing
-                                        }));
-                                    } else {
-                                        j.target = this.target + lStep;
-                                        j.put(r2.data).then(lang.hitch(this, function(r3) {
-                                            //add to widget
                                         }));
                                     }
                                 }

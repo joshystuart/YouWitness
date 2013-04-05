@@ -65,7 +65,7 @@ class Upload {
 
         if (isset($headers['X-File-Size'], $headers['X-File-Name'])) {
             $file = new stdClass();
-            $file->name = md5($headers['X-File-Name']) . '.' . pathinfo($headers['X-File-Name'], PATHINFO_EXTENSION);
+            $file->name = uniqid() . '.' . pathinfo($headers['X-File-Name'], PATHINFO_EXTENSION);
 
             $file->size = preg_replace('/\D*/', '', $headers['X-File-Size']);
 

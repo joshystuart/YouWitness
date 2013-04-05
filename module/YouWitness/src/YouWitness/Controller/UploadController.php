@@ -37,8 +37,16 @@ class UploadController extends AbstractController {
         return new JsonModel([
             'error' => false,
             'fileSrc' => $url,
-            'fileParent' => $id
+            'fileParent' => $id,
+            'fileId' => $id,
+            'fileName' => $r['fileName']
         ]);
+    }
+
+    public function delete($id) {
+        $this->initAws();
+        $this->removeFromS3($id);
+        return new JsonModel([]);
     }
 
     private function initAws() {
@@ -50,6 +58,13 @@ class UploadController extends AbstractController {
         ]);
 
         $this->s3 = $aws->get('s3');
+    }
+
+    private function removeFromS3($fileName) {
+        $r = $this->s3->deleteObject([
+            'Bucket' => $this->bucket,
+            'Key' => 'suspects/' . $fileName
+        ]);
     }
 
     private function saveToS3($f) {

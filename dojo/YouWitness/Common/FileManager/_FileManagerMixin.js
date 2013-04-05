@@ -285,10 +285,7 @@ define([
             file.remove();
             this.emit('deletedFile');
 
-            xhr.del(this.get('uploadTarget'), {
-                query: {
-                    fileId: fileId
-                },
+            xhr.del(this.get('uploadTarget') + '/' + fileId, {
                 handleAs: "json"
             }).then(function(r) {
                 //show error and re-init uploaded file

@@ -28,14 +28,17 @@ define([
                 suspects: undefined,
                 _setSuspectsAttr: function(suspects) {
                     array.forEach(suspects, lang.hitch(this, function(suspect) {
-                        var s = new Suspect(suspect);
-                        s.startup();
-                        this.suspectsNode.appendChild(s.domNode);
-                        s.on('save', lang.hitch(this, function(r) {
-                            this.emit('save', r);
-                        }));
+                        this.add(suspect);
                     }));
                     this.suspects = suspects;
+                },
+                add: function(suspect) {
+                    var s = new Suspect(suspect);
+                    s.startup();
+                    this.suspectsNode.appendChild(s.domNode);
+                    s.on('save', lang.hitch(this, function(r) {
+                        this.emit('save', r);
+                    }));
                 },
                 onAdd: function() {
                     var detail = new Details();
@@ -49,9 +52,10 @@ define([
                     //callback on save
                     dialog.show().then(lang.hitch(this, function(result) {
                         if (result.button == 'ok') {
-                            result.value.lineupId = 0;
+                            var value = detail.get('value');
+                            value.id = 0;
                             this.emit('save', {
-                                data: result.value
+                                data: value
                             });
                         }
                         detail.destroyRecursive();

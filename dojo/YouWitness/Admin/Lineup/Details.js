@@ -4,7 +4,7 @@ define([
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
-    'dojo/Evented',
+    'Sds/Form/_FormMixin',
     'dojo/text!./Template/Details.html',
     './Suspects',
     'Sds/Form/Select',
@@ -15,20 +15,29 @@ define([
         Widget,
         TemplatedMixin,
         WidgetsInTemplateMixin,
-        Evented,
+        FormMixin,
         template
         ) {
     return declare(
-            [Widget, TemplatedMixin, WidgetsInTemplateMixin, Evented],
+            [Widget, TemplatedMixin, WidgetsInTemplateMixin, FormMixin],
             {
                 templateString: template,
-                _model: {},
+                lineupMethod: null,
+                lineupComments: null,
+                lineupSuspects: [],
                 constructor: function(props) {
                     lang.mixin(this, props);
-                    lang.mixin(this._model, props);
+                },
+                startup: function() {
+                    this.inherited(arguments);
+                    this.connectChildren();
                 },
                 _setLineupSuspectsAttr: function(suspects) {
                     this.suspectsNode.set('suspects', suspects);
+                },
+                _getValueAttr: function() {
+                    var value = this.inherited(arguments);
+                    return value;
                 }
             }
     );

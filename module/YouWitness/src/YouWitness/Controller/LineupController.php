@@ -21,6 +21,25 @@ class LineupController extends AbstractController {
         return new JsonModel(['data' => $lineups]);
     }
 
+    public function create($data) {
+        $lineup = new Lineup();
+        $lineup->setMethod($data['lineupMethod']);
+        $lineup->comments = $data['lineupComments'];
+
+        $em = $this->getEntityManager();
+        $em->persist($lineup);
+        $em->flush();
+
+        return new JsonModel(['data' => [
+                'lineupId' => $lineup->id,
+                'lineupMethod' => $lineup->method,
+                'lineupComments' => $lineup->comments,
+                'lineupNum' => $lineup->num,
+                'lineupSuspects' => $lineup->getSuspects()
+            ]
+        ]);
+    }
+
     public function update($id, $data) {
         $em = $this->getEntityManager();
         $lineup = $this->getLineup($id);

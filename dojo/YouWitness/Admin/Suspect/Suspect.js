@@ -52,9 +52,7 @@ define([
                             var value = detail.get('value');
                             lang.mixin(this, value);
                             lang.mixin(this._model, value);
-                            if (value.suspectImage) {
-                                this.set('suspectImage', value.suspectImage);
-                            }
+                            this.set('suspectImage', value.suspectImage);
                             this.set('suspectExpression', value.suspectExpression);
                             value.id = this.get('suspectId');
                             this.emit('save', {
