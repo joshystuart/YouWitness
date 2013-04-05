@@ -3,6 +3,9 @@
 namespace YouWitness\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use YouWitness\Entity\LineupSuspect;
+use YouWitness\Entity\Suspect;
 
 /** @ORM\Entity */
 class Lineup {
@@ -24,8 +27,20 @@ class Lineup {
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $num = 0;
+
+    /** @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup") */
+    private $suspects;
+
     const SEQUENTIAL = 'Sequential';
     const SIMULTANEOUS = 'Simultaneous';
+
+    public function __construct() {
+        $this->suspects = new ArrayCollection();
+    }
 
     public function setMethod($method) {
         if ($method == self::SEQUENTIAL) {
@@ -35,12 +50,29 @@ class Lineup {
         }
     }
 
+    public function getSuspects() {
+        $suspects = [];
+        foreach ($this->suspects->toArray() as $suspect) {
+            $suspects[] = [
+                'suspectId' => $suspect->suspect->id,
+                'suspectImage' => $suspect->suspect->image,
+                'suspectExpression' => $suspect->suspect->expression,
+                'isPerpetrator' => $suspect->is_perpetrator,
+            ];
+        }
+        return $suspects;
+    }
+
     public function __get($key) {
         return $this->$key;
     }
 
     public function __set($key, $value) {
         $this->$key = $value;
+    }
+
+    public function addSuspect($value) {
+        $this->suspects->add($value);
     }
 
 }

@@ -15,9 +15,14 @@ class Suspect {
     private $id;
 
     /**
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", nullable=true) 
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="string", nullable=true) 
+     */
+    private $expression;
 
     public function __get($key) {
         return $this->$key;

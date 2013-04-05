@@ -9,14 +9,14 @@ class LineupSuspect {
 
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="LineUp")
+     * @ORM\ManyToOne(targetEntity="LineUp")
      * @ORM\JoinColumn(name="lineup", referencedColumnName="id")
      **/
     private $lineup;
 
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="Suspect")
+     * @ORM\ManyToOne(targetEntity="Suspect")
      * @ORM\JoinColumn(name="suspect", referencedColumnName="id")
      **/
     private $suspect;
@@ -33,5 +33,4 @@ class LineupSuspect {
     public function __set($key, $value) {
         $this->$key = $value;
     }
-
 }

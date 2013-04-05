@@ -1,0 +1,59 @@
+.file-manager-actions-container {
+    margin: 20px 0;
+}
+
+.file-manager-actions-container {
+    text-align: center;
+}
+
+.file-manager-input-button {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-right: 4px;
+}
+.file-manager-input-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translate(-300px, 0) scale(4);
+    font-size: 23px;
+    direction: ltr;
+    cursor: pointer;
+}
+
+.file-manager-progress-bar-container {
+    position: absolute;
+    top: 38px;
+    width: 120px;
+    opacity: 0.7;
+    z-index: 1000;
+}
+
+/* Fix for IE 6: */
+* html .file-managerinput-button {
+    line-height: 24px;
+    margin: 1px -3px 0 0;
+}
+
+/* Fix for IE 7: */
+* + html .file-managerinput-button {
+    padding: 2px 15px;
+    margin: 1px 0 0 0;
+}
+
+.file-manager-upload-item-thumb,
+.file-manager-item-thumb {
+    width: 120px; 
+    overflow: hidden;
+}
+.file-manager-upload-item-container ,
+.file-manager-item-container  {
+    width: 120px; 
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+}

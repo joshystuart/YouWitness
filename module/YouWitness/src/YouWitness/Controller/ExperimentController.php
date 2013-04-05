@@ -54,6 +54,8 @@ class ExperimentController extends AbstractController {
     }
 
     private function getLineUp() {
+        $em = $this->getEntityManager();
+        $em->find('YouWitness\Entity\Lineup', $id);
         return ['lineup' => 'Sequential'];
     }
 

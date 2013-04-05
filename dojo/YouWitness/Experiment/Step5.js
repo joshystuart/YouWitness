@@ -1,6 +1,7 @@
 define([
     'dojo/_base/declare',
     'dojo/_base/lang',
+    './Lineup/Simultaneous',
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
     'dojo/Evented',
@@ -8,6 +9,7 @@ define([
 ], function(
         declare,
         lang,
+        Simultaneous,
         Widget,
         TemplatedMixin,
         Evented,

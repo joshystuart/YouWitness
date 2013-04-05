@@ -10,4 +10,5 @@ require([
                 ) {
             var c = new Controller();
             c.init(dom.byId('content'));
+            c.initNav(dom.byId('nav'));
         });

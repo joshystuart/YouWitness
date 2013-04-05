@@ -6,6 +6,9 @@ return [
             'youwitness' => 'YouWitness\Controller\IndexController',
             'experiment' => 'YouWitness\Controller\ExperimentController',
             'admin' => 'YouWitness\Controller\AdminController',
+            'admin-lineup' => 'YouWitness\Controller\LineupController',
+            'admin-suspect' => 'YouWitness\Controller\SuspectController',
+            'admin-upload' => 'YouWitness\Controller\UploadController',
         ],
     ],
     'router' => array(
@@ -39,6 +42,39 @@ return [
                     ),
                 ),
             ),
+            'admin-lineup' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/lineup[/:id]',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'admin-lineup',
+                    ),
+                ),
+            ),
+            'admin-suspect' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/suspect[/:id]',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'admin-suspect',
+                    ),
+                ),
+            ),
+            'admin-upload' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/upload',
+                    'defaults' => array(
+                        'controller' => 'admin-upload',
+                    ),
+                ),
+            ),
         ),
     ),
     'view_manager' => [
@@ -66,5 +102,10 @@ return [
                 ]
             ]
         ]
+    ],
+    'aws' => [
+        'key' => 'AKIAJVX6YBZKAAUF6G2Q',
+        'secret' => '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',
+        'bucket' => 'youwitness',
     ]
 ];

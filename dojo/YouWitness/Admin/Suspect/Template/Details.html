@@ -1,0 +1,20 @@
+<div data-dojo-attach-point="containerNode">
+    <div class="row-fluid">
+        <div class="span6" data-dojo-attach-point="imageNode"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <select data-dojo-type="Sds/Form/Select" 
+                    data-dojo-attach-point="expressionNode"
+                    name="suspectExpression"
+                    value="${suspectExpression}"
+                    class="span12"
+                    data-dojo-props="
+                    label: 'Expression',
+                    focusNodeClass: 'span6'">
+                <option value="Angry">Angry</option>
+                <option value="Neutral">Neutral</option>
+            </select>
+        </div>
+    </div>
+</div>

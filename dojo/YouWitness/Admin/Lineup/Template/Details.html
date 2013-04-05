@@ -1,0 +1,31 @@
+<div data-dojo-attach-point="containerNode">
+    <div class="row-fluid">
+        <div class="span6">
+            <select data-dojo-type="Sds/Form/Select" 
+                    name="lineupMethod"
+                    value="${lineupMethod}"
+                    class="span12"
+                    data-dojo-props="
+                    label: 'Method',
+                    focusNodeClass: 'span12'">
+                <option value="Sequential">Sequential</option>
+                <option value="Simultaneous">Simultaneous</option>
+            </select>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <textarea data-dojo-type="Sds/Form/ExpandingTextarea"
+                name="lineupComments"
+                value="${lineupComments}"
+                data-dojo-props="
+                label: 'Comments',
+                focusNodeClass: 'span12'"
+                ></textarea>
+        </div>
+    </div>
+    <div class="row-fluid" 
+         data-dojo-attach-point="suspectsNode"
+         data-dojo-type="YouWitness/Admin/Lineup/Suspects" 
+         ></div>
+</div>
