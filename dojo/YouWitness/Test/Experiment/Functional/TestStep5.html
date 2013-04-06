@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testing Zoop/Admin/Catalog/Products/Details</title>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">   
+        <script type="text/javascript" src="../testconfig.js"></script>        
+        <script type="text/javascript" src="/js/dojo/dojo/dojo.js"></script>            
+        <script type="text/javascript">
+            require([
+                'dojox/mobile/parser',
+                'dojo/_base/lang',
+                'dojo/store/JsonRest',
+                'dojo/json',
+                'dojo/dom',
+                'dijit/registry',
+                'YouWitness/Experiment/Step5',
+                'dojo/domReady!'
+            ],
+                    function(
+                            parser,
+                            lang,
+                            JsonRest,
+                            json,
+                            dom,
+                            registry
+                            ) {
+                        parser.parse();
+
+                        var widget = registry.byId('widget');
+                        widget.init().then(function() {
+                            console.log('complet');
+                        });
+                        var j = new JsonRest({target: '/experiment'});
+                        j.put({
+                            section: 'Step5'
+                        }).then(lang.hitch(this, function(r2) {
+                            widget.emit('saved', r2);
+                        }));
+                    });
+        </script>
+    </head>
+    <body>        
+        <div class="container">
+            <div class="row">
+                <h1>Functional Testing Testing Zoop/Admin/Catalog/Categories/Details</h1>
+
+                <div id="widget" 
+                     data-dojo-type="YouWitness/Experiment/Step5"></div>
+            </div>
+        </div>
+    </body>
+</html>

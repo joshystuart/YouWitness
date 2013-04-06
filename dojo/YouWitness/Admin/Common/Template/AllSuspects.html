@@ -1,0 +1,13 @@
+<div data-dojo-attach-point="containerNode">
+    <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+            Suspects<span data-dojo-attach-point="dropdownNode"></span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" data-dojo-attach-point="suspectsNode"></ul>
+    </div>
+    <button class="btn btn-mini btn-success"
+            disabled="disabled"
+            data-dojo-attach-event="ondijitclick: onAdd"
+            data-dojo-attach-point="addBtnNode">Add suspect</button>
+</div>

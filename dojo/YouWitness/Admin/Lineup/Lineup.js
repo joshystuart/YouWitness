@@ -28,7 +28,9 @@ define([
                     this._model = props;
                 },
                 onDelete: function() {
-
+                    this.emit('delete', {
+                        id: this.get('lineupId')
+                    });
                 },
                 onEdit: function() {
                     var detail = new Details(this.get('_model'));

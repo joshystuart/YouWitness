@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testing Zoop/Admin/Catalog/Products/Details</title>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">   
+        <script type="text/javascript" src="../../testconfig.js"></script>        
+        <script type="text/javascript" src="/js/dojo/dojo/dojo.js"></script>            
+        <script type="text/javascript">
+            require([
+                'dojox/mobile/parser',
+                'dojo/json',
+                'dojo/dom',
+                'dijit/registry',
+                'YouWitness/Admin/Lineup/Details',
+                'dojo/domReady!'
+            ],
+                    function(
+                            parser,
+                            json,
+                            dom,
+                            registry
+                            ) {
+                        parser.parse();
+
+                        var widget = registry.byId('widget');
+
+                        widget.watch('state', function(p, o, n) {
+                            dom.byId('state').innerHTML = n;
+                        });
+
+                        widget.watch('value', function(p, o, n) {
+                            dom.byId('value').innerHTML = json.stringify(n, null, '    ');
+                        });
+
+                        dom.byId('state').innerHTML = widget.get('state');
+                        dom.byId('value').innerHTML = json.stringify(widget.get('value'), null, '    ');
+                    });
+        </script>
+    </head>
+    <body>        
+        <div class="container">
+            <div class="row">
+                <h1>Functional Testing Testing Zoop/Admin/Catalog/Categories/Details</h1>
+
+                <div id="widget" 
+                     data-dojo-type="YouWitness/Admin/Lineup/Details"
+                     data-dojo-props="
+                     lineupMethod: 'Simultaneous',
+                     lineupComments: 'stuff',"
+                     ></div>
+            </div>
+            <div class="row">
+                <p>State: <pre id="state"></pre></p>
+                <p>Value: <pre id="value"></pre></p>
+            </div>
+        </div>
+    </body>
+</html>

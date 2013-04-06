@@ -1,19 +1,16 @@
 <div data-dojo-attach-point="containerNode">
     <div class="jumbotron">
-        <div class="suspect">
-            <ul class="thumbnails">
-                <li class="span3">
-                    <div class="thumbnail">
-                        <div data-dojo-attach-point="imageNode"></div>
-                        <div data-dojo-type="Sds/Form/Toggle"
-                             data-dojo-attach-point="suspectNode">
-                            <option value="No">No</option>
-                            <option value="Yes">Yes</option>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <p><button class="btn btn-primary" type="button" href="#">Next</button></p>
-        </div>
+        <ul class="thumbnails" data-dojo-attach-point="suspectsNode"></ul> 
+        <p class="lead">OR<br></p>
+        <label class="suspect" style="text-align:center">
+            <p class="lead"> 
+                <button class="btn"
+                        data-dojo-attach-point="btnNode"
+                        data-dojo-attach-event="ondijitclick: onNoPerpetrator">Perpetrator not present</button>
+            </p>
+        </label> 
+
+        <p><button class="btn btn-primary btn-large" type="button"
+                   data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
     </div>
 </div>

@@ -38,6 +38,11 @@ define([
                     l.on('save', lang.hitch(this, function(r) {
                         this.emit('save', r);
                     }));
+                    this.lineupFormNode.appendChild(l.domNode);
+                    l.on('delete', lang.hitch(this, function(r) {
+                        this.emit('delete', r);
+                        l.destroyRecursive();
+                    }));
                 },
                 onAdd: function() {
                     var detail = new Details();
@@ -57,6 +62,7 @@ define([
                                 data: value
                             });
                         }
+                        detail.destroyRecursive();
                         dialog.destroyRecursive();
                     }));
                 },

@@ -21,7 +21,7 @@
         "doctrine/doctrine-module": "0.7.*",
         "doctrine/doctrine-orm-module": "dev-master",
         "superdweebie/dojo": "dev-master",
-        "superdweebie/sijit": "dev-master",
+        "superdweebie/sijit": "dev-Tooltip",
         "xsokev/dojo-bootstrap": "v1.2",
         "twitter/bootstrap": "2.3.1",
         "fort-awesome/font-awesome": "3.0.1"

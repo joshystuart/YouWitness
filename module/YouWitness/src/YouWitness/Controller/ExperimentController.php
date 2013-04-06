@@ -13,6 +13,7 @@ use Zend\View\Model\JsonModel;
 use YouWitness\Entity\Participant;
 use YouWitness\Entity\Step;
 use YouWitness\Entity\Lineup;
+use YouWitness\Entity\ParticipantLineup;
 use Zend\Session\Container as SessionContainer;
 
 class ExperimentController extends AbstractController {
@@ -20,6 +21,7 @@ class ExperimentController extends AbstractController {
     private $session;
 
     public function create($data) {
+        $r = [];
         $this->session = new SessionContainer('base');
         $oldSection = $this->session->offsetGet('section');
 
@@ -32,6 +34,7 @@ class ExperimentController extends AbstractController {
         } else {
             $participant = $this->getParticipant($this->session->offsetGet('id'));
         }
+
         if ($participant) {
             switch ($data['section']) {
                 case '1':
@@ -42,26 +45,76 @@ class ExperimentController extends AbstractController {
                     $this->updateParticipant($participant, $data);
                     break;
                 case '5':
-                    $r = $this->getLineUp();
+                    $r = $this->getLineUp($participant);
+                    break;
+                case '6':
+                    $r = $this->setFinished($participant);
                     break;
             }
 
             $this->setStep($participant, $data['section']);
-            return new JsonModel(['error' => false, 'newSection' => $data['section'], 'oldSection' => $oldSection]);
+            return new JsonModel(['error' => false, 'newSection' => $data['section'], 'oldSection' => $oldSection, 'data' => $r]);
         } else {
-            return new JsonModel(['error' => true, 'message' => 'Cannot create participant']);
+            return new JsonModel(['error' => true, 'message' => 'Cannot create participant', 'data' => $r]);
         }
     }
 
-    private function getLineUp() {
+    private function setFinished($participant) {
         $em = $this->getEntityManager();
-        $em->find('YouWitness\Entity\Lineup', $id);
-        return ['lineup' => 'Sequential'];
+        $pls = $this->getParticipantLineup($participant);
+        foreach ($pls as $pl) {
+            if (empty($pl->date_end)) {
+                $pl->date_end = new \DateTime("now");
+                $em->persist($pl);
+            }
+        }
+        $em->flush();
+    }
+
+    private function getLineUp($participant) {
+        $em = $this->getEntityManager();
+        $dql = "SELECT l FROM YouWitness\Entity\Lineup l
+                ORDER BY l.num ASC";
+        $query = $em->createQuery($dql)
+                ->setMaxResults(1);
+        $lineup = $query->getSingleResult();
+
+        //set participant lineup
+        $this->createParticipantLineup($participant, $lineup);
+
+        $lineup->num = $lineup->num + 1;
+        $em->persist($lineup);
+        $em->flush();
+
+        return [
+            'lineup' => $lineup->method,
+            'lineupId' => $lineup->id,
+            'suspects' => $lineup->getSuspects(),
+        ];
+    }
+
+    private function createParticipantLineup($participant, $lineup) {
+        $em = $this->getEntityManager();
+
+        $pl = new ParticipantLineup();
+        $pl->participant = $participant;
+        $pl->lineup = $lineup;
+
+        $em->persist($pl);
+        $em->flush();
     }
 
     private function getParticipant($id) {
         $em = $this->getEntityManager();
         return $em->find('YouWitness\Entity\Participant', $id);
+    }
+
+    private function getParticipantLineup($participant) {
+        $em = $this->getEntityManager();
+        return $em->getRepository('YouWitness\Entity\ParticipantLineup')
+                        ->findBy([
+                            'participant' => $participant
+        ]);
     }
 
     private function updateParticipant($participant, $data) {
@@ -77,7 +130,6 @@ class ExperimentController extends AbstractController {
 
     private function createParticipant() {
         $participant = new Participant();
-        $participant->date = new \DateTime("now");
 
         //save to db
         $em = $this->getEntityManager();

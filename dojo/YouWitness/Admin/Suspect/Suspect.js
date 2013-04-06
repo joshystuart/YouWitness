@@ -35,7 +35,9 @@ define([
                     this._model = props;
                 },
                 onDelete: function() {
-
+                    this.emit('delete', {
+                        id: this.get('suspectId')
+                    });
                 },
                 onEdit: function() {
                     var detail = new Details(this.get('_model'));
@@ -70,7 +72,7 @@ define([
                 _setSuspectImageAttr: function(image) {
                     domConstruct.empty(this.imageNode);
                     if (image && image.length > 0) {
-                        var img = domConstruct.create('img', {
+                        domConstruct.create('img', {
                             src: image,
                             width: 100
                         }, this.imageNode);

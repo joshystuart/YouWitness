@@ -35,8 +35,12 @@ define([
                 _setLineupSuspectsAttr: function(suspects) {
                     this.suspectsNode.set('suspects', suspects);
                 },
+                _getLineupSuspectsAttr: function(suspects) {
+                    return this.suspectsNode.get('value');
+                },
                 _getValueAttr: function() {
                     var value = this.inherited(arguments);
+                    value.lineupSuspects = this.get('lineupSuspects');
                     return value;
                 }
             }

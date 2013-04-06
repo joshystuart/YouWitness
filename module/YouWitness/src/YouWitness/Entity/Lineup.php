@@ -32,7 +32,7 @@ class Lineup {
      */
     private $num = 0;
 
-    /** @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup") */
+    /** @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup", cascade={"all"}) */
     private $suspects;
 
     const SEQUENTIAL = 'Sequential';
@@ -63,6 +63,15 @@ class Lineup {
         return $suspects;
     }
 
+    public function inSuspects($suspectId) {
+        foreach ($this->suspects->toArray() as $ls) {
+            if ($ls->suspect->id == $suspectId) {
+                return $ls->id;
+            }
+        }
+        return false;
+    }
+
     public function __get($key) {
         return $this->$key;
     }
@@ -71,8 +80,12 @@ class Lineup {
         $this->$key = $value;
     }
 
-    public function addSuspect($value) {
-        $this->suspects->add($value);
+    public function addSuspect(LineupSuspect $suspect) {
+        $this->suspects->add($suspect);
+    }
+
+    public function removeSuspect($suspect) {
+        $this->suspects->remove($suspect);
     }
 
 }

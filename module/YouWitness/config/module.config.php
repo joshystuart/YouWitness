@@ -4,7 +4,9 @@ return [
     'controllers' => [
         'invokables' => [
             'youwitness' => 'YouWitness\Controller\IndexController',
+            'email' => 'YouWitness\Controller\EmailController',
             'experiment' => 'YouWitness\Controller\ExperimentController',
+            'experiment-lineup' => 'YouWitness\Controller\ExperimentLineupController',
             'admin' => 'YouWitness\Controller\AdminController',
             'admin-lineup' => 'YouWitness\Controller\LineupController',
             'admin-suspect' => 'YouWitness\Controller\SuspectController',
@@ -23,12 +25,30 @@ return [
                     ),
                 ),
             ),
+            'email' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/email',
+                    'defaults' => array(
+                        'controller' => 'email',
+                    ),
+                ),
+            ),
             'experiment' => array(
                 'type' => 'Literal',
                 'options' => array(
                     'route' => '/experiment',
                     'defaults' => array(
                         'controller' => 'experiment',
+                    ),
+                ),
+            ),
+            'experiment-lineup' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/experiment/lineup',
+                    'defaults' => array(
+                        'controller' => 'experiment-lineup',
                     ),
                 ),
             ),

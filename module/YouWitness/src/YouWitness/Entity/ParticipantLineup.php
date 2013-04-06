@@ -27,9 +27,13 @@ class ParticipantLineup {
     private $date_start;
 
     /**
-     * @ORM\Column(type="datetime") 
+     * @ORM\Column(type="datetime", nullable=true) 
      */
     private $date_end;
+
+    public function __construct() {
+        $this->date_start = new \DateTime("now");
+    }
 
     public function __get($key) {
         return $this->$key;

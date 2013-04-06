@@ -11,6 +11,8 @@ namespace YouWitness\Controller;
 use YouWitness\Controller\AbstractController;
 use Zend\View\Model\JsonModel;
 use YouWitness\Entity\Lineup;
+use YouWitness\Entity\LineupSuspect;
+use YouWitness\Entity\Suspect;
 
 class LineupController extends AbstractController {
 
@@ -22,13 +24,23 @@ class LineupController extends AbstractController {
     }
 
     public function create($data) {
+        $em = $this->getEntityManager();
         $lineup = new Lineup();
         $lineup->setMethod($data['lineupMethod']);
         $lineup->comments = $data['lineupComments'];
-
-        $em = $this->getEntityManager();
         $em->persist($lineup);
         $em->flush();
+
+        if (count($data['lineupSuspects']) > 0) {
+            foreach ($data['lineupSuspects'] as $suss) {
+                $suspect = $this->getSuspect($suss['suspectId']);
+                $this->createLineupSuspect($lineup, $suspect, $suss['isPerpetrator']);
+            }
+            $em->persist($lineup);
+            $em->flush();
+        } else {
+            //remove
+        }
 
         return new JsonModel(['data' => [
                 'lineupId' => $lineup->id,
@@ -45,8 +57,63 @@ class LineupController extends AbstractController {
         $lineup = $this->getLineup($id);
         $lineup->comments = $data['lineupComments'];
         $lineup->setMethod($data['lineupMethod']);
+        $allLineupSuspects = clone($lineup->suspects);
+        $lineup->suspects->clear();
+
+        if (count($data['lineupSuspects']) > 0) {
+            foreach ($data['lineupSuspects'] as $suss) {
+                $suspect = $this->getSuspect($suss['suspectId']);
+                $this->createLineupSuspect($lineup, $suspect, $suss['isPerpetrator']);
+            }
+        }
+
+        $this->removeLineupSuspects($allLineupSuspects, $lineup->suspects);
 
         $em->persist($lineup);
+        $em->flush();
+        return new JsonModel([]);
+    }
+
+    private function removeLineupSuspects($allLineupSuspects, $activeLineupSuspects) {
+        $em = $this->getEntityManager();
+        foreach ($allLineupSuspects->toArray() as $ls) {
+            if ($activeLineupSuspects->contains($ls) === false) {
+                die('here');
+                $em->remove($ls);
+            }
+        }
+        $em->flush();
+    }
+
+    private function createLineupSuspect($lineup, $suspect, $isPerpertrator) {
+        $em = $this->getEntityManager();
+        $ls = $this->getLineupSuspect($lineup, $suspect);
+
+        if ($ls) {
+            $ls->setIsperpetrator($isPerpertrator);
+            $em->persist($ls);
+            $em->flush();
+        } else {
+            $ls = new LineupSuspect();
+            $ls->lineup = $lineup;
+            $ls->suspect = $suspect;
+            $ls->setIsperpetrator($isPerpertrator);
+            $em->persist($ls);
+            $em->flush();
+        }
+        $lineup->addSuspect($ls);
+        return $ls;
+    }
+
+    private function getLineupSuspect($lineup, $suspect) {
+        $em = $this->getEntityManager();
+        return $em->find('YouWitness\Entity\LineupSuspect', ['suspect' => $suspect->id, 'lineup' => $lineup->id]);
+    }
+
+    public function delete($id) {
+        $em = $this->getEntityManager();
+        $lineup = $this->getLineup($id);
+        $em->remove($lineup);
         $em->flush();
         return new JsonModel([]);
     }
@@ -71,6 +138,11 @@ class LineupController extends AbstractController {
             ];
         }
         return $l;
+    }
+
+    private function getSuspect($id) {
+        $em = $this->getEntityManager();
+        return $em->find('YouWitness\Entity\Suspect', $id);
     }
 
 }

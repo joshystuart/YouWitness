@@ -5,7 +5,6 @@ define([
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
-    'Sds/Form/_FormMixin',
     'dojo/Evented',
     'dojo/text!./Template/Suspect.html',
     'Sds/Form/Select'
@@ -16,23 +15,16 @@ define([
         Widget,
         TemplatedMixin,
         WidgetsInTemplateMixin,
-        FormMixin,
         Evented,
         template
         ) {
     return declare(
-            [Widget, TemplatedMixin, WidgetsInTemplateMixin, FormMixin, Evented],
+            [Widget, TemplatedMixin, WidgetsInTemplateMixin, Evented],
             {
                 templateString: template,
-                suspectId: 0,
-                suspectImage: null,
-                isPerpetrator: false,
+                isPerpetrator: 0,
                 constructor: function(props) {
                     lang.mixin(this, props);
-                },
-                onRemove: function()
-                {
-                    this.emit('remove',{});
                 },
                 _setSuspectIdAttr: {
                     node: "idNode",
@@ -43,15 +35,10 @@ define([
                     if (image && image.length > 0) {
                         domConstruct.create('img', {
                             src: image,
-                            width: 100
+                            width: 50,
+                            height: 50
                         }, this.imageNode);
                     }
-                },
-                _getValueAttr: function() {
-                    var val = this.inherited(arguments);
-                    val.suspectId = this.get('suspectId');
-                    val.suspectImage = this.get('suspectImage');
-                    return val;
                 }
             }
     );

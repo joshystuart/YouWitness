@@ -1,7 +1,9 @@
 define([
     'dojo/_base/declare',
     'dojo/_base/lang',
-    './Lineup/Simultaneous',
+    'dojo/dom-construct',
+    'dojo/Deferred',
+    'Sds/ModuleManager/ModuleManager',
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
     'dojo/Evented',
@@ -9,7 +11,9 @@ define([
 ], function(
         declare,
         lang,
-        Simultaneous,
+        domConstruct,
+        Deferred,
+        ModuleManager,
         Widget,
         TemplatedMixin,
         Evented,
@@ -21,7 +25,7 @@ define([
                 templateString: template,
                 postCreate: function() {
                     this.inherited(arguments);
-                    setTimeout(lang.hitch(this, this.onNext), 60000);
+                    this.manager = new ModuleManager();
                 },
                 init: function() {
                     this.def = new Deferred();
@@ -33,8 +37,22 @@ define([
                         target: '/experiment'
                     });
                     this.on('saved', lang.hitch(this, function(r) {
-                        console.log(r);
-                        this.def.resolve({});
+                        if (r.data) {
+                            this.manager.get('YouWitness/Experiment/Lineup/' + r.data.lineup + 'Intro').then(lang.hitch(this, function(s) {
+                                this.containerNode.appendChild(s.domNode);
+                                s.set('lineupId', r.data.lineupId);
+                                s.set('layoutNode', this.containerNode);
+                                s.set('suspects', r.data.suspects);
+                                s.on('finished', lang.hitch(this, function() {
+                                    s.destroyRecursive();
+                                    domConstruct.empty(this.containerNode);
+                                    this.onNext();
+                                }));
+
+                                //set up experiment
+                                this.def.resolve({});
+                            }));
+                        }
                     }));
                     return this.def;
                 },

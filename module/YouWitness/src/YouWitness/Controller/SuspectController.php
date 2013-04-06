@@ -48,6 +48,14 @@ class SuspectController extends AbstractController {
         return new JsonModel([]);
     }
 
+    public function delete($id) {
+        $em = $this->getEntityManager();
+        $suspect = $this->getSuspect($id);
+        $em->remove($suspect);
+        $em->flush();
+        return new JsonModel([]);
+    }
+
     private function getSuspects() {
         $s = [];
         $em = $this->getEntityManager();

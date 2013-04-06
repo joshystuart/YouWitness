@@ -1,27 +1,30 @@
 define([
     'dojo/_base/declare',
-    'dojo/_base/lang',
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin',
     'dojo/Evented',
-    'dojo/text!./Template/Step6.html'
+    'dojo/text!./Template/Step6.html',
+    'YouWitness/Experiment/Email'
 ], function(
         declare,
-        lang,
         Widget,
         TemplatedMixin,
+        WidgetsInTemplateMixin,
         Evented,
         template
         ) {
     return declare(
-            [Widget, TemplatedMixin, Evented],
+            [Widget, TemplatedMixin, WidgetsInTemplateMixin, Evented],
             {
                 templateString: template,
-                postCreate: function() {
+                startup: function() {
                     this.inherited(arguments);
                     this.emit('save', {
-                        data: {},
-                        target: '/step-6'
+                        data: {
+                            section: '6'
+                        },
+                        target: '/experiment'
                     });
                 }
             }

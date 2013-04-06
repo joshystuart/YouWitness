@@ -39,6 +39,10 @@ define([
                     s.on('save', lang.hitch(this, function(r) {
                         this.emit('save', r);
                     }));
+                    s.on('delete', lang.hitch(this, function(r) {
+                        this.emit('delete', r);
+                        s.destroyRecursive();
+                    }));
                 },
                 onAdd: function() {
                     var detail = new Details();

@@ -4,19 +4,22 @@ define([
     'dojo/Deferred',
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin',
     'dojo/Evented',
-    'dojo/text!./Template/Step1.html'
+    'dojo/text!./Template/Step1.html',
+    'YouWitness/Experiment/Email'
 ], function(
         declare,
         lang,
         Deferred,
         Widget,
         TemplatedMixin,
+        WidgetsInTemplateMixin,
         Evented,
         template
         ) {
     return declare(
-            [Widget, TemplatedMixin, Evented],
+            [Widget, TemplatedMixin, WidgetsInTemplateMixin, Evented],
             {
                 templateString: template,
                 init: function() {

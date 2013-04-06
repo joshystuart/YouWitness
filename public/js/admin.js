@@ -2,6 +2,7 @@
 require([
     'dojo/dom',
     'YouWitness/Admin/Controller',
+    'Bootstrap/Dropdown',
     'dojo/domReady!'
 ],
         function(

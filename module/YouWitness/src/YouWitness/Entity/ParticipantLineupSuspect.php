@@ -33,6 +33,15 @@ class ParticipantLineupSuspect {
      */
     private $is_perpetrator;
 
+    public function setIsperpetrator($is) {
+        if ($is == 'true') {
+            $is = 1;
+        } else {
+            $is = 0;
+        }
+        $this->is_perpetrator = $is;
+    }
+
     public function __get($key) {
         return $this->$key;
     }

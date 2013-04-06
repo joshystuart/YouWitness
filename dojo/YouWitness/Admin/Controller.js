@@ -60,7 +60,7 @@ define([
                             }
                             domConstruct.place(w.domNode, this.container, 'last');
 
-                            w.on('save', lang.hitch(this, function(r2) {
+                            var save = w.on('save', lang.hitch(this, function(r2) {
                                 if (r2.data) {
                                     if (r2.data.id == 0) {
                                         r2.data.id = undefined;
@@ -77,8 +77,16 @@ define([
                                     }
                                 }
                             }));
+                            var del = w.on('delete', lang.hitch(this, function(r2) {
+                                j.target = this.target + lStep + '/';
+                                if (r2.id) {
+                                    j.remove(r2.id);
+                                }
+                            }));
 
                             var wEvent = this.nav.on('show', lang.hitch(this, function(n) {
+                                save.remove();
+                                del.remove();
                                 wEvent.remove();
                                 domConstruct.empty(this.container);
                                 this.show(n.section);

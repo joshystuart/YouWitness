@@ -8,8 +8,13 @@
                 class="span12"
                 data-dojo-props="
                 focusNodeClass: 'span6'">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
         </select>
+    </td>
+    <td>
+        <button class="btn btn-mini btn-danger" 
+                data-dojo-attach-event="ondijitclick: onRemove"
+                data-dojo-attach-point="editNode">remove</button>
     </td>
 </tr>
