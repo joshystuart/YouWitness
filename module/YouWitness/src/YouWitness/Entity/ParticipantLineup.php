@@ -31,6 +31,11 @@ class ParticipantLineup {
      */
     private $date_end;
 
+    /**
+     * @ORM\Column(type="integer", length=1, nullable=true) 
+     */
+    private $confidence;
+
     public function __construct() {
         $this->date_start = new \DateTime("now");
     }

@@ -55,7 +55,7 @@ define([
                             }
                             var j = new JsonRest({target: r.target});
                             j.put(r.data).then(lang.hitch(this, function(r2) {
-                                if (r2.error == true) {
+                                if (r2.error == true && step != 'Step6') {
                                     s.destroyRecursive();
                                     this.show('Step6');
                                 } else if (r2.error == false) {

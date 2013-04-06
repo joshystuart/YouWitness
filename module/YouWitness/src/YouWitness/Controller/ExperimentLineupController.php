@@ -22,10 +22,11 @@ class ExperimentLineupController extends AbstractController {
     public function create($data) {
         $this->session = new SessionContainer('base');
         $id = $this->session->offsetGet('id');
+        $lineupId = $this->session->offsetGet('lineupId');
 
         if ($data['lineup'] == Lineup::SEQUENTIAL) {
             $participant = $this->getParticipant($id);
-            $lineup = $this->getLineUp($data['lineupId']);
+            $lineup = $this->getLineUp($lineupId);
             $suspect = $this->getSuspect($data['suspectId']);
 
             $this->createSelection($lineup, $participant, $suspect, $data['isPerpetrator']);
@@ -35,13 +36,25 @@ class ExperimentLineupController extends AbstractController {
             }
         } else if ($data['lineup'] == Lineup::SIMULTANEOUS) {
             $participant = $this->getParticipant($id);
-            $lineup = $this->getLineUp($data['lineupId']);
-            
+            $lineup = $this->getLineUp($lineupId);
+
             if ($data['isPerpetrator'] == 'true') {
                 $suspect = $this->getSuspect($data['suspectId']);
                 $this->createSelection($lineup, $participant, $suspect, $data['isPerpetrator']);
             }
             $this->createRemainderOfSuspects($lineup, $participant, 'false');
+        } else if (isset($data['confidence'])) {
+            $em = $this->getEntityManager();
+            $participant = $this->getParticipant($id);
+            $lineup = $this->getLineUp($lineupId);
+
+            $pls = $this->getParticipantLineUp($lineup, $participant);
+            foreach ($pls as $pl) {
+                $pl->confidence = intval($data['confidence']);
+                $em->persist($pl);
+                break;
+            }
+            $em->flush();
         }
         return new JsonModel([]);
     }

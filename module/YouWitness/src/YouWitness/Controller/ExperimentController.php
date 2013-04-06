@@ -12,7 +12,6 @@ use YouWitness\Controller\AbstractController;
 use Zend\View\Model\JsonModel;
 use YouWitness\Entity\Participant;
 use YouWitness\Entity\Step;
-use YouWitness\Entity\Lineup;
 use YouWitness\Entity\ParticipantLineup;
 use Zend\Session\Container as SessionContainer;
 
@@ -85,7 +84,7 @@ class ExperimentController extends AbstractController {
         $lineup->num = $lineup->num + 1;
         $em->persist($lineup);
         $em->flush();
-
+        $this->session->offsetSet('lineupId', $lineup->id);
         return [
             'lineup' => $lineup->method,
             'lineupId' => $lineup->id,

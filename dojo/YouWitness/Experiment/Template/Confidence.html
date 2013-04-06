@@ -1,0 +1,24 @@
+<div data-dojo-attach-point="containerNode">
+    <div class="jumbotron">
+        <h1>Confidence</h1>
+        <p class="lead">Please rate on this scale how confident you are with your selection within the line-up.</p>
+        <div data-dojo-type="Sds/Form/Toggle"
+             data-dojo-attach-point="confidenceToggleNode">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </div>
+        <div style="width:450px; margin:0 auto;">
+            <p>1 is not confident at all, 5 is extremely confident.</p>
+            <p> </p>
+            <p></p>
+            <p>
+                <button class="btn btn-primary" type="button"
+                   data-dojo-attach-point="nextButtonNode"
+                   data-dojo-attach-event="ondijitclick: onNext">Next</button>
+            </p>
+        </div>
+    </div>
+</div>
