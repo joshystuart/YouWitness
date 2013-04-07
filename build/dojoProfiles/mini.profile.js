@@ -19,7 +19,7 @@ var profile = {
         },
         "popup": true,
         "async": true,
-        "baseUrl": "/js/",
+        "baseUrl": "https://s3-ap-southeast-2.amazonaws.com/youwitness/js/",
         "aliases": [
             ["get", "Sds/ModuleManager/Shared/get"],
             ["proxy", "Sds/ModuleManager/Shared/proxy"],
@@ -35,27 +35,27 @@ var profile = {
     "packages": [
         {
             "name": "dojo",
-            "location": "public/dev-assets/dojo"
+            "location": "vendor/dojo/dojo"
         },
         {
             "name": "dijit",
-            "location": "public/dev-assets/dijit"
+            "location": "vendor/dojo/dijit"
         },
         {
             "name": "dojox",
-            "location": "public/dev-assets/dojox"
+            "location": "vendor/dojo/dojox"
         },
         {
             "name": "Sds",
-            "location": "public/dev-assets/Sds"
+            "location": "vendor/dojo/Sds"
         },
         {
-            "name": "Zoop",
-            "location": "public/dev-assets/Zoop"
+            "name": "YouWitness",
+            "location": "dojo/YouWitness"
         },
         {
             "name": "bootstrap",
-            "location": "public/dev-assets/bootstrap"
+            "location": "vendor/dojo/bootstrap"
         }
     ],
     "layers": {
@@ -97,6 +97,7 @@ var profile = {
                 "Sds/Validator/Datatype",
                 "Sds/Validator/NotRequired",
                 "Sds/Validator/Group",
+                "Sds/Store/storeManager",
                 "YouWitness/Common/PreLoad",
                 "YouWitness/Admin/Controller",
                 "YouWitness/Admin/Suspect/Suspect",
@@ -145,6 +146,7 @@ var profile = {
                 "Sds/Validator/Datatype",
                 "Sds/Validator/NotRequired",
                 "Sds/Validator/Group",
+                "Sds/Store/storeManager",
                 "YouWitness/Common/PreLoad",
                 "YouWitness/Experiment/Confidence",
                 "YouWitness/Experiment/Controller",

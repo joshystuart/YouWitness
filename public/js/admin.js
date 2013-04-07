@@ -2,7 +2,7 @@ require(['YouWitness/AdminBase.min'], function() {
     require([
         'dojo/dom',
         'YouWitness/Admin/Controller',
-        'Bootstrap/Dropdown',
+        'bootstrap/Dropdown',
         'dojo/domReady!'
     ],
             function(

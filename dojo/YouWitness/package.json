@@ -1,0 +1,10 @@
+{
+	"name": "YouWitness",
+	"version":"0.1",
+	"main":"main",
+	"dependencies": {
+		"dojo": "current"
+	},
+	"keywords": ["JavaScript", "Dojo", "Widget"],
+	"dojoBuild": "YouWitness.profile.js"
+}

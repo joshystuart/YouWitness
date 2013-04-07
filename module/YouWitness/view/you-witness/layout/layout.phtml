@@ -8,16 +8,28 @@
         //get current view model
         $children = $this->viewModel()->getCurrent()->getChildren();
         $child = $children[0];
-        
-        echo $this->headLink()
-                ->prependStylesheet($this->basePath() . '/css/main.css')
-                ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
-                ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
 
-        echo $this->headScript()
-                ->appendFile('/js/config.dev.js', 'text/javascript')
-                ->appendFile('/js/dojo/dojo/dojo.js', 'text/javascript')
-                ->appendFile($child->app_script, 'text/javascript');
+        if (SERVER_TYPE == 'development') {
+            echo $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/main.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+
+            echo $this->headScript()
+                    ->appendFile('/js/config.dev.js', 'text/javascript')
+                    ->appendFile('/js/dojo/dojo/dojo.js', 'text/javascript')
+                    ->appendFile($child->app_script, 'text/javascript');
+        } else {
+            echo $this->headLink()
+                    ->prependStylesheet('https://s3-ap-southeast-2.amazonaws.com/youwitness/css/main.min.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+
+            echo $this->headScript()
+                    ->appendFile('/js/config.js', 'text/javascript')
+                    ->appendFile('https://s3-ap-southeast-2.amazonaws.com/youwitness/js/dojo.js', 'text/javascript')
+                    ->appendFile($child->app_script, 'text/javascript');
+        }
         ?>
 
     </head>

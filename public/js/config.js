@@ -10,13 +10,8 @@ dojoConfig = {
         ['dojo/parser', 'dojox/mobile/parser'],
         ['dijit/_WidgetsInTemplateMixin', 'Sds/Widget/_WidgetsInTemplateMixin']
     ],
-    mergeConfigs: [
-        'Sds/Validator/config',
-        'Sds/Filter/config',
-        'Sds/ExceptionModule/config'
-    ],
     packages: [{
         name: 'YouWitness',
-        location: '/js/dojo/YouWitness'
+        location: 'https://s3-ap-southeast-2.amazonaws.com/youwitness/js'
     }]
 }

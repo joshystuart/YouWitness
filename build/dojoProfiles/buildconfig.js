@@ -48,4 +48,4 @@ dojoConfig = {
     ]
 }
 
-require('../../vendor/dojo/dojo');
+require('../../vendor/dojo/dojo/dojo');

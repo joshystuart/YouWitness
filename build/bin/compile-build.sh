@@ -51,3 +51,6 @@ do
     
     gzip -9 -c ./${compile_dir}/${name} > ./${compile_dir}/${base}.min.js
 done
+
+
+gzip -9 -c ./${css_build_dir}/main.css > ./${css_build_dir}/main.min.css
