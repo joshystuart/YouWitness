@@ -20,6 +20,8 @@ class UploadController extends AbstractController {
     private $s3;
     private $bucket;
 
+    const S3_WEB_BUCKET = 'youwitness';
+
     public function create($data) {
         $this->initAws();
 
@@ -71,7 +73,7 @@ class UploadController extends AbstractController {
         try {
             $h = fopen($f['file'], 'r');
             $r = $this->s3->putObject([
-                'Bucket' => $this->bucket,
+                'Bucket' => self::S3_WEB_BUCKET,
                 'Key' => 'suspects/' . $f['fileName'],
                 'Body' => $h,
                 'ACL' => CannedAcl::PUBLIC_READ
