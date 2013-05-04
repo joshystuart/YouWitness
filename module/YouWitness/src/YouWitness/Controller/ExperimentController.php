@@ -14,6 +14,7 @@ use YouWitness\Entity\Participant;
 use YouWitness\Entity\Step;
 use YouWitness\Entity\ParticipantLineup;
 use Zend\Session\Container as SessionContainer;
+use Zend\Session\SessionManager;
 
 class ExperimentController extends AbstractController {
 
@@ -25,7 +26,8 @@ class ExperimentController extends AbstractController {
         $oldSection = $this->session->offsetGet('section');
 
         if (isset($data['section']) && $data['section'] < $oldSection) {
-            return new JsonModel(['error' => true, 'message' => 'You cannot complete the experiment more than once']);
+            $this->session->offsetUnset('section');
+            $this->session->offsetUnset('id');
         }
 
         if ($this->session->offsetExists('id') == false) {

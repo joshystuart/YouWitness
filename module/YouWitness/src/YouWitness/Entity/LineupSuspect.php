@@ -10,14 +10,14 @@ class LineupSuspect {
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="LineUp")
-     * @ORM\JoinColumn(name="lineup", referencedColumnName="id")
+     * @ORM\JoinColumn(name="lineup", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $lineup;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Suspect")
-     * @ORM\JoinColumn(name="suspect", referencedColumnName="id")
+     * @ORM\JoinColumn(name="suspect", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $suspect;
 
