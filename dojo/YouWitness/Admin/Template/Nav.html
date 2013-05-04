@@ -1,9 +1,11 @@
 <div data-dojo-attach-point="containerNode">
     <div class="container">
-        <div data-dojo-type="Sds/Form/Toggle"
+        <div class="pull-left"
+             data-dojo-type="Sds/Form/Toggle"
              data-dojo-attach-point="navNode" value="Lineup">
             <option value="Lineup">Lineups</option>
             <option value="Suspect">Suspects</option>
         </div>
+        <button class="btn btn-primary pull-right" data-dojo-attach-event="ondijitclick: onDownload">Download Results</button>
     </div>
 </div>

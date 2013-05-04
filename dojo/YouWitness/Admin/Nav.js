@@ -27,6 +27,9 @@ define([
                             section: v
                         });
                     }));
+                },
+                onDownload: function(e) {
+                    document.location.href = '/admin/download';
                 }
             }
     );

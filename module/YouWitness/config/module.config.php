@@ -11,6 +11,7 @@ return [
             'admin-lineup' => 'YouWitness\Controller\LineupController',
             'admin-suspect' => 'YouWitness\Controller\SuspectController',
             'admin-upload' => 'YouWitness\Controller\UploadController',
+            'admin-download' => 'YouWitness\Controller\AdminDownloadController',
         ],
     ],
     'router' => array(
@@ -95,6 +96,16 @@ return [
                     ),
                     'defaults' => array(
                         'controller' => 'admin-upload',
+                    ),
+                ),
+            ),
+            'admin-download' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/download',
+                    'defaults' => array(
+                        'controller' => 'admin-download',
+                        'action' => 'index',
                     ),
                 ),
             ),

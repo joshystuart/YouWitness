@@ -9,7 +9,7 @@ return [
                     'host' => 'youwitness.cv5qov1b1ue0.ap-southeast-2.rds.amazonaws.com',
                     'port' => '3306',
                     'user' => 'youwitness',
-                    'password' => 'Morg89!!',
+                    'password' => 'morgan89',
                     'dbname' => 'youwitness',
                 ]
             ]

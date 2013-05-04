@@ -145,4 +145,11 @@ class LineupController extends AbstractController {
         return $em->find('YouWitness\Entity\Suspect', $id);
     }
 
+//    private function getLinesups() {
+//        SELECT l.method, l.comments, ls.is_perpetrator, s.expression
+//        FROM `Lineup` l
+//        JOIN `LineupSuspect` ls ON l.id = ls.lineup
+//        JOIN `Suspect` s ON s.id = ls.suspect
+//    }
+
 }
