@@ -3,6 +3,7 @@ define([
     'dojo/_base/lang',
     'dojo/_base/array',
     'dojo/query',
+    'dojo/dom-construct',
     './SimultaneousSuspect',
     'dojo/store/JsonRest',
     'dijit/_Widget',
@@ -16,6 +17,7 @@ define([
         lang,
         array,
         query,
+        domConstruct,
         SimultaneousSuspect,
         JsonRest,
         Widget,
@@ -41,15 +43,24 @@ define([
                     this.showSuspects(this.suspects);
                 },
                 showSuspects: function(suspects) {
-                    array.forEach(suspects, lang.hitch(this, function(suspect) {
+                    var cont;
+                    var total = suspects.length;
+                    array.forEach(suspects, lang.hitch(this, function(suspect, i) {
+                        if (i % 3 == 0) {
+                            cont = domConstruct.create('div', {'class': 'row-fluid'});
+                        }
                         var s = new SimultaneousSuspect(suspect);
                         s.startup();
-                        this.suspectsNode.appendChild(s.domNode);
                         s.on('selected', lang.hitch(this, function() {
                             this.set('current', s);
                             this.removeAllActive();
                             s.setActive();
                         }));
+                        cont.appendChild(s.domNode);
+
+                        if (i == (total - 1) || ((i + 1) % 3)) {
+                            this.suspectsContainerNode.appendChild(cont);
+                        }
                     }));
                 },
                 onNoPerpetrator: function() {

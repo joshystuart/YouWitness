@@ -26,6 +26,11 @@ class LineupSuspect {
      */
     private $is_perpetrator;
 
+    /**
+     * @ORM\Column(name="`order`", type="integer") 
+     */
+    private $order;
+
     public function setIsperpetrator($is) {
         if ($is == 'true') {
             $is = 1;

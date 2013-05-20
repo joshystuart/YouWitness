@@ -182,6 +182,6 @@ label.radio {
     position: relative;
 }
 
-.thumbnails li:nth-child(3n) {
-    margin-left: 0;
+.thumbnails .row-fluid {
+    margin-bottom: 10px;
 } 
