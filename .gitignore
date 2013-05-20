@@ -1,2 +1,6 @@
 /vendor
 /composer.lock
+/tmp
+/public/video
+/data/DoctrineORMModule/Proxy
+/php_errors.log
