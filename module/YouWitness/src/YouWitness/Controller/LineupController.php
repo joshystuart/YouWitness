@@ -78,7 +78,6 @@ class LineupController extends AbstractController {
         $em = $this->getEntityManager();
         foreach ($allLineupSuspects->toArray() as $ls) {
             if ($activeLineupSuspects->contains($ls) === false) {
-                die('here');
                 $em->remove($ls);
             }
         }

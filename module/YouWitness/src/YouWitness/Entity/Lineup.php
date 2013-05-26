@@ -34,6 +34,7 @@ class Lineup {
 
     /**
      * @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup", cascade={"all"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
     private $suspects;
 
@@ -60,6 +61,7 @@ class Lineup {
                 'suspectImage' => $suspect->suspect->image,
                 'suspectExpression' => $suspect->suspect->expression,
                 'isPerpetrator' => $suspect->is_perpetrator,
+                'order' => $suspect->order
             ];
         }
         return $suspects;

@@ -11,7 +11,6 @@ class LineupSuspect {
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="LineUp")
      * @ORM\JoinColumn(name="lineup", referencedColumnName="id", onDelete="CASCADE")
-     * @ORM\OrderBy({"suspectOrder" = "ASC"})
      * */
     private $lineup;
 
@@ -19,6 +18,7 @@ class LineupSuspect {
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Suspect")
      * @ORM\JoinColumn(name="suspect", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\OrderBy({"suspectOrder" = "ASC"})
      * */
     private $suspect;
 
