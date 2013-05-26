@@ -27,14 +27,10 @@ define([
                 gender: undefined,
                 postCreate: function() {
                     this.inherited(arguments);
-
-                    //prevent right click
-                    on(document, 'click,dblclick', function(e) {
-                        if (e.button == 2) {
-                            event.stop(e);
-                        }
-                    });
-                    this.videoNode.onended = lang.hitch(this, this.onNext);
+                    
+                    //adding this fixes chrome ending bug?
+                    on(this.videoNode, 'durationchange', function(e) {});
+                    on(this.videoNode, 'ended', lang.hitch(this, this.onNext));
                 },
                 startup: function() {
                     this.inherited(arguments);
