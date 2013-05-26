@@ -79,7 +79,9 @@ class UploadController extends AbstractController {
                 'ACL' => CannedAcl::PUBLIC_READ
             ]);
             fclose($h);
-            unlink($r['file']);
+            if (is_file($r['file'])) {
+                unlink($r['file']);
+            }
             return $r->get('ObjectURL');
         } catch (S3Exception $e) {
             echo 'The item could not be saved.';

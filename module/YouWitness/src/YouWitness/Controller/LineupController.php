@@ -108,21 +108,17 @@ class LineupController extends AbstractController {
 
     private function getMaxSuspectOrder($lineup) {
         $em = $this->getEntityManager();
-        $qb = $em->createQueryBuilder();
+        $q = $em->createQuery("
+            SELECT MAX(ls.order)
+            FROM YouWitness\Entity\LineupSuspect ls
+            WHERE ls.lineup = '" . $lineup->id . "'
+            GROUP BY ls.lineup");
 
-        $qb->select('MAX(ls.order)')
-                ->from('YouWitness\Entity\LineupSuspect', 'ls')
-                ->where('ls.lineup = :lineup')
-                ->groupBy('ls.lineup')
-                ->setParameter('lineup', $lineup->id);
-
-        $q = $qb->getQuery();
-        \fb($q);
-        if (empty($q)) {
+        $result = $q->getResult();
+        if (empty($result)) {
             $order = 1;
         } else {
-            $order = 1;
-//            $order = $q->getSingleScalarResult() + 1;
+            $order = $q->getSingleScalarResult() + 1;
         }
         return $order;
     }

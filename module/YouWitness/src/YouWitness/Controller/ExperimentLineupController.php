@@ -24,7 +24,7 @@ class ExperimentLineupController extends AbstractController {
         $id = $this->session->offsetGet('id');
         $lineupId = $this->session->offsetGet('lineupId');
 
-        if ($data['lineup'] == Lineup::SEQUENTIAL) {
+        if (isset($data['lineup']) && $data['lineup'] == Lineup::SEQUENTIAL) {
             $participant = $this->getParticipant($id);
             $lineup = $this->getLineUp($lineupId);
             $suspect = $this->getSuspect($data['suspectId']);
@@ -34,7 +34,7 @@ class ExperimentLineupController extends AbstractController {
                 //add the remainder of the suspects as "no"
                 $this->createRemainderOfSuspects($lineup, $participant, 'false');
             }
-        } else if ($data['lineup'] == Lineup::SIMULTANEOUS) {
+        } else if (isset($data['lineup']) && $data['lineup'] == Lineup::SIMULTANEOUS) {
             $participant = $this->getParticipant($id);
             $lineup = $this->getLineUp($lineupId);
 

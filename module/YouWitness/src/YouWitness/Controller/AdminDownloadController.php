@@ -29,6 +29,7 @@ class AdminDownloadController extends AbstractAdminController {
 
     private function createCsv() {
         $results = $this->getResults();
+
         ob_start();
         $df = fopen("php://output", 'w');
         fputcsv($df, array_keys(reset($results)));
@@ -49,6 +50,7 @@ class AdminDownloadController extends AbstractAdminController {
             ')->getResult();
         foreach ($res as $r) {
             $suspects = $r->lineup->getSuspects();
+
             $results[] = [
                 'Sex' => $r->participant->gender,
                 'Lineup Method' => $r->lineup->method,
@@ -92,7 +94,7 @@ class AdminDownloadController extends AbstractAdminController {
 
     private function getCorrectSuspect($suspects) {
         foreach ($suspects as $suspect) {
-            if ($suspect->is_perpetrator === true) {
+            if ($suspect['isPerpetrator'] === true) {
                 return $suspect;
             }
         }
@@ -109,7 +111,7 @@ class AdminDownloadController extends AbstractAdminController {
             return false;
         } elseif ($correct === false && $selected === false) {
             return true;
-        } elseif ($correct->id == $selected->id) {
+        } elseif ($correct['suspectId'] == $selected->id) {
             return true;
         } else {
             return false;

@@ -14,6 +14,7 @@ use Zend\Session\Container as SessionContainer;
 abstract class AbstractAdminController extends AbstractActionController {
 
     protected $session;
+    protected $em;
 
     protected function isLoggedIn() {
 
