@@ -54,6 +54,7 @@ class AdminDownloadController extends AbstractAdminController {
             $results[] = [
                 'Sex' => $r->participant->gender,
                 'Lineup Method' => $r->lineup->method,
+                'Lineup Comments' => $r->lineup->comments,
                 'Target Status' => ($this->isTargetPresent($suspects) === true) ? 'Target Present' : 'Target Absent',
                 'Lineup Variation' => $this->calculateVariation($suspects),
                 'Lineup Selection' => ($this->isSelectionCorrect($suspects, $r->lineup, $r->participant) === true) ? 'Correct' : 'Incorrect',

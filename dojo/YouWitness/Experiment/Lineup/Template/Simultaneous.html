@@ -1,16 +1,20 @@
 <div data-dojo-attach-point="containerNode">
-    <div class="jumbotron">
-        <div class="thumbnails" data-dojo-attach-point="suspectsContainerNode"></div> 
-        <p class="lead">OR<br></p>
-        <label class="suspect" style="text-align:center">
-            <p class="lead"> 
-                <button class="btn"
-                        data-dojo-attach-point="btnNode"
-                        data-dojo-attach-event="ondijitclick: onNoPerpetrator">Perpetrator not present</button>
-            </p>
-        </label> 
+    <div class="row-fluid">
+        <div class="thumbnails span8 offset2" data-dojo-attach-point="suspectsContainerNode"></div> 
+    </div>
+    <div class="row-fluid">
+        <div class="jumbotron">
+            <p class="lead">OR<br></p>
+            <label class="suspect" style="text-align:center">
+                <p class="lead"> 
+                    <button class="btn"
+                            data-dojo-attach-point="btnNode"
+                            data-dojo-attach-event="ondijitclick: onNoPerpetrator">Perpetrator not present</button>
+                </p>
+            </label> 
 
-        <p><button class="btn btn-primary btn-large" type="button"
-                   data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
+            <p><button class="btn btn-primary btn-large" type="button"
+                       data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
+        </div>
     </div>
 </div>

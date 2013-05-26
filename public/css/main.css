@@ -184,4 +184,8 @@ label.radio {
 
 .thumbnails .row-fluid {
     margin-bottom: 10px;
-} 
+}
+
+.suspect {
+    text-align: center;
+}
