@@ -33,7 +33,7 @@ class ParticipantLineupSuspect {
      */
     private $is_perpetrator;
 
-    public function setIsperpetrator($is) {
+    public function setIsPerpetrator($is) {
         if ($is == 'true') {
             $is = 1;
         } else {

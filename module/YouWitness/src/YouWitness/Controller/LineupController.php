@@ -90,19 +90,41 @@ class LineupController extends AbstractController {
         $ls = $this->getLineupSuspect($lineup, $suspect);
 
         if ($ls) {
-            $ls->setIsperpetrator($isPerpertrator);
+            $ls->setIsPerpetrator($isPerpertrator);
             $em->persist($ls);
             $em->flush();
         } else {
             $ls = new LineupSuspect();
             $ls->lineup = $lineup;
             $ls->suspect = $suspect;
-            $ls->setIsperpetrator($isPerpertrator);
+            $ls->setIsPerpetrator($isPerpertrator);
+            $ls->order = $this->getMaxSuspectOrder($lineup);
             $em->persist($ls);
             $em->flush();
         }
         $lineup->addSuspect($ls);
         return $ls;
+    }
+
+    private function getMaxSuspectOrder($lineup) {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('MAX(ls.order)')
+                ->from('YouWitness\Entity\LineupSuspect', 'ls')
+                ->where('ls.lineup = :lineup')
+                ->groupBy('ls.lineup')
+                ->setParameter('lineup', $lineup->id);
+
+        $q = $qb->getQuery();
+        \fb($q);
+        if (empty($q)) {
+            $order = 1;
+        } else {
+            $order = 1;
+//            $order = $q->getSingleScalarResult() + 1;
+        }
+        return $order;
     }
 
     private function getLineupSuspect($lineup, $suspect) {
@@ -151,5 +173,4 @@ class LineupController extends AbstractController {
 //        JOIN `LineupSuspect` ls ON l.id = ls.lineup
 //        JOIN `Suspect` s ON s.id = ls.suspect
 //    }
-
 }

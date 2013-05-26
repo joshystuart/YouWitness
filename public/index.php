@@ -5,6 +5,8 @@
  */
 chdir(dirname(__DIR__));
 
+require_once('FirePHPCore/fb.php');
+
 // Setup autoloading
 require 'init_autoloader.php';
 

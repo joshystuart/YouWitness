@@ -11,6 +11,7 @@ class LineupSuspect {
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="LineUp")
      * @ORM\JoinColumn(name="lineup", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\OrderBy({"suspectOrder" = "ASC"})
      * */
     private $lineup;
 
@@ -27,11 +28,11 @@ class LineupSuspect {
     private $is_perpetrator;
 
     /**
-     * @ORM\Column(name="`order`", type="integer") 
+     * @ORM\Column(name="suspectOrder", type="integer") 
      */
     private $order;
 
-    public function setIsperpetrator($is) {
+    public function setIsPerpetrator($is) {
         if ($is == 'true') {
             $is = 1;
         } else {

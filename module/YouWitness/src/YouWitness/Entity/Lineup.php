@@ -32,7 +32,9 @@ class Lineup {
      */
     private $num = 0;
 
-    /** @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup", cascade={"all"}) */
+    /**
+     * @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup", cascade={"all"})
+     */
     private $suspects;
 
     const SEQUENTIAL = 'Sequential';
