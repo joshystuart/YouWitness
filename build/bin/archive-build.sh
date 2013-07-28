@@ -3,8 +3,8 @@
 s3_cdn_bucket="youwitness"
 
 css_build_dir="public/css"
-js_build_dir="public/js/prod-assets"
-compile_dir="public/js/prod-assets/_temp"
+js_build_dir="public/prod-assets"
+compile_dir="public/prod-assets/_temp"
 
 s3_css_dir="/css/"
 

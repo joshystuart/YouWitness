@@ -1,9 +1,9 @@
 #!/bin/bash
 
-build_dir="public/js/prod-assets"
+build_dir="public/prod-assets"
 css_build_dir="public/css"
 
-compile_dir="public/js/prod-assets/_temp"
+compile_dir="public/prod-assets/_temp"
 
 includeNls=("en-gb" "en-us" "en-au" "ROOT")
 

@@ -1,6 +1,6 @@
 var profile = {
     "basePath": "../../",
-    "releaseDir": "public/js/prod-assets",
+    "releaseDir": "public/prod-assets",
     "action": "release",
     "cssOptimize": "comments",
     "layerOptimize": "closure",
