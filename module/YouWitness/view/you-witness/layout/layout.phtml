@@ -19,6 +19,16 @@
                     ->appendFile('/js/config.dev.js', 'text/javascript')
                     ->appendFile('/js/dojo/dojo/dojo.js', 'text/javascript')
                     ->appendFile($child->app_script, 'text/javascript');
+        } elseif (SERVER_TYPE == 'test') {
+            echo $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/main.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+                    ->prependStylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+
+            echo $this->headScript()
+                    ->appendFile('/js/config.dev.js', 'text/javascript')
+                    ->appendFile('/js/dojo/dojo/dojo.js', 'text/javascript')
+                    ->appendFile($child->app_script, 'text/javascript');
         } else {
             echo $this->headLink()
                     ->prependStylesheet('https://s3-ap-southeast-2.amazonaws.com/youwitness/css/main.min.css')
@@ -56,7 +66,7 @@
             </div>
             <div id="nav"></div>
             <div id="content">
-<?php echo $this->content; ?>
+                <?php echo $this->content; ?>
             </div>
             <div class="footer">
                 <p class="copy">&copy; YouWitness.com.au 2013</p>
