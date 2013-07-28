@@ -22,9 +22,7 @@
         "doctrine/doctrine-orm-module": "dev-master",
         "superdweebie/dojo": "dev-master",
         "superdweebie/sijit": "dev-master",
-        "xsokev/dojo-bootstrap": "v1.2",
-        "twitter/bootstrap": "2.3.1",
-        "fort-awesome/font-awesome": "3.0.1"
+        "xsokev/dojo-bootstrap": "v1.2"
     },
     "autoload": {
         "psr-0": {
