@@ -51,6 +51,8 @@ class AdminDownloadController extends AbstractAdminController {
         foreach ($res as $r) {
             $suspects = $r->lineup->getSuspects();
 
+            $selectedSuspect = $this->getSelectedSuspect($r->lineup, $r->participant);
+
             $results[] = [
                 'Sex' => $r->participant->gender,
                 'Lineup Method' => $r->lineup->method,
@@ -58,7 +60,8 @@ class AdminDownloadController extends AbstractAdminController {
                 'Target Status' => ($this->isTargetPresent($suspects) === true) ? 'Target Present' : 'Target Absent',
                 'Lineup Variation' => $this->calculateVariation($suspects),
                 'Lineup Selection' => ($this->isSelectionCorrect($suspects, $r->lineup, $r->participant) === true) ? 'Correct' : 'Incorrect',
-                'Facial Expression' => $this->getSelectedSuspectValue($r->lineup, $r->participant),
+                'Selected Suspect' => ($selectedSuspect !== false) ? $selectedSuspect->id : 0,
+                'Selected Suspect Facial Expression' => ($selectedSuspect !== false) ? $selectedSuspect->expression : 'None',
                 'Confidence' => $r->confidence,
             ];
         }
