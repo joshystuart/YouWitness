@@ -43,6 +43,7 @@ do
 
     for nl in "${includeNls[@]}"
     do
+        echo "${build_dir}/YouWitness/nls/${base}_${nl}.js"
         if [ -f ${build_dir}/YouWitness/nls/${base}_${nl}.js ]
         then
             cat ./${build_dir}/YouWitness/nls/${base}_${nl}.js >> ./${compile_dir}/${name}
