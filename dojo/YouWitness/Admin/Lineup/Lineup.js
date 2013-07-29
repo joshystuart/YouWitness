@@ -1,7 +1,7 @@
 define([
     'dojo/_base/declare',
     'dojo/_base/lang',
-    'Sds/Widget/Dialog',
+    'YouWitness/Common/Dialog',
     './Details',
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
