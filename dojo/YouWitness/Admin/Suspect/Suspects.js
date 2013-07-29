@@ -2,7 +2,7 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/_base/array',
-    'Sds/Widget/Dialog',
+    'YouWitness/Common/Dialog',
     './Details',
     './Suspect',
     'dijit/_Widget',

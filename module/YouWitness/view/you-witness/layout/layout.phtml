@@ -37,7 +37,7 @@
 
             echo $this->headScript()
                     ->appendFile('/js/config.js', 'text/javascript')
-                    ->appendFile('https://s3-ap-southeast-2.amazonaws.com/youwitness/js/dojo.js', 'text/javascript')
+                    ->appendFile('https://s3-ap-southeast-2.amazonaws.com/youwitness/js/dojo.min.js', 'text/javascript')
                     ->appendFile($child->app_script, 'text/javascript');
         }
         ?>

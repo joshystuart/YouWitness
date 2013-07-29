@@ -2,7 +2,7 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/_base/array',
-    'Sds/Widget/Dialog',
+    'YouWitness/Common/Dialog',
     './Details',
     './Lineup',
     'dijit/_Widget',
@@ -52,6 +52,8 @@ define([
                     });
                     detail.startup();
                     dialog.startup();
+                    console.log(detail);
+                    console.log(dialog);
 
                     //callback on save
                     dialog.show().then(lang.hitch(this, function(result) {

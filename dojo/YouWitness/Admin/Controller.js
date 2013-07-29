@@ -7,7 +7,9 @@ define([
     '../Common/PreLoad',
     'Sds/ModuleManager/ModuleManager',
     './Nav',
-    'dojo/Stateful'
+    'dojo/Stateful',
+    'YouWitness/Admin/Lineup/Lineups',
+    'YouWitness/Admin/Suspect/Suspects'
 ], function(
         declare,
         lang,

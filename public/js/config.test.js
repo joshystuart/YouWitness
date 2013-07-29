@@ -1,6 +1,6 @@
 // Dojo Configuration
 dojoConfig = {
-    isDebug: true,
+    isDebug: false,
     locale: 'en-au',
     popup: true,
     async: true,

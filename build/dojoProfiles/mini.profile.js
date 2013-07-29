@@ -104,6 +104,7 @@ var profile = {
                 "Sds/Validator/NotRequired",
                 "Sds/Validator/Group",
                 "Sds/Store/storeManager",
+                "YouWitness/Common/Dialog",
                 "YouWitness/Common/PreLoad",
                 "YouWitness/Admin/Controller",
                 "YouWitness/Admin/Suspect/Suspect",

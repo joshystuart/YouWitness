@@ -30,10 +30,10 @@ s3cmd --config=/root/.s3cfg put --acl-public --force --no-progress ./${js_build_
 s3cmd --config=/root/.s3cfg put --acl-public --force --no-progress ./${js_build_dir}/dojo/resources/iframe_history.html s3://${s3_cdn_bucket}${s3_js_dir}resources/iframe_history.htm
 
 echo "Moving NL files to S3"
-s3cmd --config=/root/.s3cfg put --acl-public --force --recursive --no-progress ./${js_build_dir}/YouWitness/nls s3://${s3_cdn_bucket}${s3_js_dir}
+#s3cmd --config=/root/.s3cfg put --acl-public --force --recursive --no-progress ./${js_build_dir}/YouWitness/nls s3://${s3_cdn_bucket}${s3_js_dir}
 
 echo "Moving Additional files to S3"
-s3cmd --config=/root/.s3cfg put --acl-public --force --recursive --no-progress ./${js_build_dir}/dojo/cldr s3://${s3_cdn_bucket}${s3_js_dir}
+#s3cmd --config=/root/.s3cfg put --acl-public --force --recursive --no-progress ./${js_build_dir}/dojo/cldr s3://${s3_cdn_bucket}${s3_js_dir}
 
 echo "Moving CSS"
 s3cmd --config=/root/.s3cfg put -m text/css --acl-public --force --no-progress ./${css_build_dir}/main.css s3://${s3_cdn_bucket}${s3_css_dir}main.css

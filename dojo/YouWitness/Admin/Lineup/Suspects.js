@@ -50,7 +50,6 @@ define([
                     this.suspects.push(s);
                 },
                 remove: function(suspect) {
-                    console.log(suspect);
                     var newSuspects = array.filter(this.suspects, lang.hitch(this, function(s) {
                         return s.get('suspectId') !== suspect.get('suspectId');
                     }));
