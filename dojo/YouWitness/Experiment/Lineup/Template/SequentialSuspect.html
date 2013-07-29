@@ -1,17 +1,27 @@
 <div data-dojo-attach-point="containerNode" class="offset4 span3">
-    <div class="alert alert-error hide" data-dojo-attach-point="alertNode">
-        Please select an option
+    <div class="row-fluid">
+        <div class="alert alert-error hide" data-dojo-attach-point="alertNode">
+            Please select an option
+        </div>
     </div>
-    <ul class="thumbnails">
-        <li class="span12">
-            <div class="thumbnail" data-dojo-attach-point="imageNode"></div>
-        </li>
-    </ul>
-    <div data-dojo-type="Sds/Form/Toggle"
-         data-dojo-attach-point="perpetratorToggleNode">
-        <option value="true">Yes</option>
-        <option value="false">No</option>
+    <div class="row-fluid">
+        <ul class="thumbnails">
+            <li class="span12">
+                <div class="thumbnail" data-dojo-attach-point="imageNode"></div>
+            </li>
+        </ul>
     </div>
-    <p><button class="btn btn-primary btn-large" type="button"
-               data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
+    <div class="row-fluid">
+        <div data-dojo-type="Sds/Form/Toggle"
+             data-dojo-attach-point="perpetratorToggleNode"
+             data-dojo-props="
+             name: 'perpetratorToggleNode', 
+             label: '',
+             options: {'true': 'Yes', 'false': 'No'}">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <p><button class="btn btn-primary btn-large" type="button"
+                   data-dojo-attach-event="ondijitclick: onNext">Next</button></p>
+    </div>
 </div>

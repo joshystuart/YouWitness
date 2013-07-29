@@ -3,12 +3,17 @@
         <h1>Confidence</h1>
         <p class="lead">Please rate on this scale how confident you are with your selection within the line-up.</p>
         <div data-dojo-type="Sds/Form/Toggle"
-             data-dojo-attach-point="confidenceToggleNode">
-            <option value="1">Not at all confident</option>
-            <option value="2">Slightly confident</option>
-            <option value="3">Moderately confident</option>
-            <option value="4">Very confident</option>
-            <option value="5">Extremely confident</option>
+             data-dojo-attach-point="confidenceToggleNode"
+             data-dojo-props="
+             name: 'confidenceToggleNode', 
+             label: '',
+             options: {
+                1: 'Not at all confident',
+                2: 'Slightly confident',
+                3: 'Moderately confident',
+                4: 'Very confident',
+                5: 'Extremely confident'
+             }">
         </div>
         <div style="width:450px; margin:0 auto;">
             <p></p>
