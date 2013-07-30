@@ -5,7 +5,6 @@ namespace YouWitness\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use YouWitness\Entity\LineupSuspect;
-use YouWitness\Entity\Suspect;
 
 /** @ORM\Entity */
 class Lineup {

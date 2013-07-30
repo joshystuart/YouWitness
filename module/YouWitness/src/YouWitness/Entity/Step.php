@@ -3,6 +3,7 @@
 namespace YouWitness\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use YouWitness\Entity\Participant;
 
 /** @ORM\Entity */
 class Step {

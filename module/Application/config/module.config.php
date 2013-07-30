@@ -41,4 +41,18 @@ return array(
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
     ),
+    'doctrine' => [
+        'driver' => [
+            'YouWitness_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/YouWitness/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'YouWitness\Entity' => 'YouWitness_driver',
+                ]
+            ]
+        ]
+    ],
 );

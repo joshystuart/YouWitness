@@ -3,6 +3,8 @@
 namespace YouWitness\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use YouWitness\Entity\Lineup;
+use YouWitness\Entity\Suspect;
 
 /** @ORM\Entity */
 class LineupSuspect {
