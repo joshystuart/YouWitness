@@ -16,7 +16,7 @@ class Step {
     private $id;
     
    /**
-     * @ORM\ManyToOne(targetEntity="Participant")
+     * @ORM\ManyToOne(targetEntity="YouWitness\Entity\Participant")
      * @ORM\JoinColumn(name="participant", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $participant;

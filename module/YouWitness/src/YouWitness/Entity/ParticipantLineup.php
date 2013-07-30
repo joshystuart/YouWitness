@@ -11,14 +11,14 @@ class ParticipantLineup {
 
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="Participant")
+     * @ORM\OneToOne(targetEntity="YouWitness\Entity\Participant")
      * @ORM\JoinColumn(name="participant", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $participant;
 
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="LineUp")
+     * @ORM\OneToOne(targetEntity="YouWitness\Entity\Lineup")
      * @ORM\JoinColumn(name="lineup", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $lineup;

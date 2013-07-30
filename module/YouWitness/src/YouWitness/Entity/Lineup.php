@@ -32,7 +32,7 @@ class Lineup {
     private $num = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="LineupSuspect", mappedBy="lineup", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="YouWitness\Entity\LineupSuspect", mappedBy="lineup", cascade={"all"})
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $suspects;

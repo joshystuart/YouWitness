@@ -1,5 +1,14 @@
 <?php
 
+$server = @$_SERVER['SERVER_TYPE'];
+if (empty($server)) {
+    $server = getenv('SERVER_TYPE');
+}
+if (empty($server)) {
+    die('no server type set');
+}
+define('SERVER_TYPE', $server);
+
 if (SERVER_TYPE == 'development') {
     return [
         'modules' => [

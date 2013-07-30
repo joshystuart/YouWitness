@@ -11,14 +11,14 @@ class LineupSuspect {
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="LineUp")
+     * @ORM\ManyToOne(targetEntity="YouWitness\Entity\Lineup")
      * @ORM\JoinColumn(name="lineup", referencedColumnName="id", onDelete="CASCADE")
      * */
     private $lineup;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Suspect")
+     * @ORM\ManyToOne(targetEntity="YouWitness\Entity\Suspect")
      * @ORM\JoinColumn(name="suspect", referencedColumnName="id", onDelete="CASCADE")
      * @ORM\OrderBy({"suspectOrder" = "ASC"})
      * */
