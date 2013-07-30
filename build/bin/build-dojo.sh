@@ -3,10 +3,10 @@
 
 profile_version=$1
 
-mkdir -p ./public/js/prod-assets/
+mkdir -p ./public/prod-assets/
 
 echo "Removing old dojo build"
-rm -rf ./public/js/prod-assets/*
+rm -rf ./public/prod-assets/*
 
 #Preprocess build profile
 /opt/node/bin/node ./build/dojoProfiles/buildconfig.js load=Sds/Build/preprocess --profile ./build/dojoProfiles/${profile_version}.profile.js

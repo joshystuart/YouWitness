@@ -1,16 +1,16 @@
 <div data-dojo-attach-point="containerNode">
     <div class="jumbotron">
         <h1>Watch Video</h1>
+        <p><small>The video may not appear immediately, please wait for it to load.</small></p>
         <video class="video-js vjs-default-skin"
-               poster="/img/loading.jpg"
                autoplay="autoplay"
                preload="auto"
                width="700"
                height="405"
                data-dojo-attach-point="videoNode">
             <source src="https://s3-ap-southeast-2.amazonaws.com/youwitness/video/YouWitness.mp4" type="video/mp4">
-            <source src="https://s3-ap-southeast-2.amazonaws.com/youwitness/video/YouWitness.ogv" type="video/ogg">
             <source src="https://s3-ap-southeast-2.amazonaws.com/youwitness/video/YouWitness.webm" type="video/webm">
+            <source src="https://s3-ap-southeast-2.amazonaws.com/youwitness/video/YouWitness.ogv" type="video/ogg; codecs='theora, vorbis'">
             <p>Sorry your browser does not support our video format. It is recommended you use either <a href="http://www.google.com/chrome/intl/en/landing_chrome.html">Google Chrome</a> or <a href="http://www.mozilla.org/en-US/firefox/new/">Mozilla Firefox</a>.</p>
         </video>  
     </div>
